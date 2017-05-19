@@ -118,19 +118,17 @@
 		<label for="email">Email</label> <input type="email" v-model.lazy="email" id="email">
 		<fieldset>
 			<legend>Interests</legend>
-			<div>
-				<input type="checkbox" v-model="selectedInterests" value="Running"> Running
-			</div>
-			<div>
-				<input type="checkbox" v-model="selectedInterests" value="Cycling"> Cycling
-			</div>
-			<div>
-				<input type="checkbox" v-model="selectedInterests" value="Swimming"> Swimming
+			<div v-for="interest in interests">
+				<input type="checkbox" v-model="selectedInterests" :value="interest"> {{interest}}
 			</div>
 		</fieldset>
 		<input type="submit" value="Subscribe">
     <!-- <p>You entered {{email}}</p> -->
-    <p> Selected: {{selectedInterests.join(', ')}}</p>
+    <!-- <p v-show="selectedInterests.length > 0"> Selected: {{selectedInterests.join(', ')}}</p> -->
+    <!-- doesn't work with v-show below -->
+        <p v-if= "selectedInterests.length ==3">You must be very active!</p>
+        <p v-else-if="selectedInterests.length > 0"> Selected: {{selectedInterests.join(', ')}}</p>
+        <p v-else>Please Select at least one interest</p>
 	</form>
 </div>
 
@@ -139,7 +137,8 @@
 	   el: '#app',
 	   data: {
 		   email: 'Jeremy@example.com',
-       selectedInterests:["Running","Swimming"]
+       interests:["Running","Swimming", "Cycling"],
+       selectedInterests:[]
 	   }
 	});
 </script>

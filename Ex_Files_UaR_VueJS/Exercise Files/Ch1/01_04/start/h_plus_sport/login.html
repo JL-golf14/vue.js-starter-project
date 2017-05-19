@@ -95,51 +95,63 @@
             </div>
         </div>
         <div class="post-content section-inner thin">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
-<div id="app">    
-	<button>Log in</button>        
-	{{msg}}    
+<div id="app">
+	<button v-if=!loggedIn v-on:click="logIn">Log in</button>
+  <button v-else @click="logOut">Log Out</button>
+	{{msg}}
 </div>
 
 <script>
     new Vue({
        el: '#app',
        data: {
-           msg: ''           
+           msg: '',
+           loggedIn: false
+       },
+       methods: {
+         logIn: function() {
+           this.loggedIn = true;
+           this.msg = 'Welcome!';
+         },
+         logOut: function() {
+           this.loggedIn = false;
+           this.msg = 'So Long';
+         }
        }
     });
 </script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
     <div class="clear"></div>
