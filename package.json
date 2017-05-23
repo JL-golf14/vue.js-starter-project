@@ -1,0 +1,23 @@
+{
+  "name": "jeremy",
+  "version": "1.0.0",
+  "description": "vue",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JL-golf14/vue.js-starter-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JL-golf14/vue.js-starter-project/issues"
+  },
+  "homepage": "https://github.com/JL-golf14/vue.js-starter-project#readme",
+  "dependencies": {
+    "vue": "^2.3.3"
+  },
+  "devDependencies": {}
+}

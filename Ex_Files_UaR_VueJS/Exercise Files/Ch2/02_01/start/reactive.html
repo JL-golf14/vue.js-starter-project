@@ -4,7 +4,9 @@
 
 <div id="app">
     <p>
-        {{firstName}} {{lastName}}
+      <input type="text" v-model.number="tempFahrenheit">
+        <!-- {{firstName}} {{lastName}} -->
+      Temperature in celsius: {{tempCelsius}}
     </p>
 </div>
 
@@ -12,7 +14,18 @@
     var vm = new Vue({
        el: '#app',
        data: {
-            firstName: 'Mike'
+            firstName: 'Mike',
+            lastName: 'Leif',
+            tempFahrenheit:0
+       },
+       computed:{
+         tempCelsius: function(){
+           return Math.round(5/9 * (this.tempFahrenheit -32));
+         },
+         
+         tempCelsiusFunc: function(){
+           return Math.round(5/9 * (this.tempFahrenheit -32));
+         }
        }
     });
 </script>

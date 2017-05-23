@@ -3,25 +3,33 @@
 <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
 <div id="app">
-    
+  <global-component> </global-component>
+  <local-component>  </local-component>
 </div>
 
 <script>
-    new Vue({
-       el: '#app',
-       data: {
-           num: 42
-       }
-    });
+  Vue.component('global-component',{
+  template: '<div> tester for gloabl component</div>'
+  });
+
+var LocalComponent = {template: '<div>a local component</div>'}
+
+new Vue({
+  el: '#app',
+  data: {
+    num: 42
+  },
+  components: {'local-component': LocalComponent}
+});
 </script>
 
 <style>
-    div#app {
-        border: none;
-    }
-    div {
-        border: solid 2px black;
-        margin-bottom: 20px;
-        padding: 10px;
-    }
+div#app {
+  border: none;
+}
+div {
+  border: solid 2px black;
+  margin-bottom: 20px;
+  padding: 10px;
+}
 </style>

@@ -95,53 +95,71 @@
             </div>
         </div>
         <div class="post-content section-inner thin">
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
 <div id="app">
     Got a question for our virtual agent? Just ask!
     <input type="text" v-model="question">
     {{response}}
+    <ul>
+      <li f-for="product in products">{{products.name}}</li>
+    </ul>
 </div>
 
 <script>
-    vm = new Vue({
+  var  vm = new Vue({
         el: '#app',
         data: {
             question: '',
-            response: ''
+            response: '',
+            products:[]
+        },
+        watch: {
+          question: function(newValue){
+             if (newValue.indexOf('products') > -1){
+               this.response = 'Sure I can list the products for you';
+               $.getJSON('https://hplussport.com/api/products')
+               .done(function(data){
+                 vm.products = data;
+               });
+             }else{
+               this.response = "Sorry, I don't understand that question.";
+               this.product = [];
+             }
+          }
         }
     });
 </script>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
     </div>
     <div class="clear"></div>
